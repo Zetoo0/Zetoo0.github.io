@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Összeadás</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+
+    <div class="row">
+        <div class="col-sm-4">
+
+        </div>
+        <div class="col-sm-4">
+            <h1>Téglalap területe, kerülete</h1>
+            a=
+            <input type="text" id="szam1" class="form-control">b=
+            <input type="text" id="szam2" class="form-control">
+            <button onclick="teruletkerulet()" class="btn btn-primary" button style="color:black">Számítás</button>
+            <br>
+            <span style="font-size: 20px;color:blue"> Területe:</span>
+            <span style="font-size: 20px;color:blue" id="kimenet1"></span>
+            <br>
+            <span style="font-size: 20px;color:red"> Kerülete:</span>
+            <span style="font-size: 20px;color:red" id="kimenet2"></span>
+        </div>
+        <div class="col-sm-4">
+
+        </div>
+    </div>
+
+
+
+
+    <script>
+        function teruletkerulet() {
+            var szam1 = document.getElementById("szam1").value;
+            var szam2 = document.getElementById("szam2").value;
+            var osszeg = parseInt(szam1) * parseInt(szam2);
+            document.getElementById("kimenet1").innerHTML = osszeg;
+            var szam1 = document.getElementById("szam1").value;
+            var szam2 = document.getElementById("szam2").value;
+            var osszeg1 = (parseInt(szam1) + parseInt(szam2)) * 2;
+            document.getElementById("kimenet2").innerHTML = osszeg1;
+        }
+    </script>
+
+</body>
+
+</html>
