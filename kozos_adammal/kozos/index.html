@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <style>
+        header {
+            background-image: url("hatter.jpg");
+        }
+        
+        .keret {
+            border: 2px solid greenyellow;
+            padding: 5px;
+            text-align: center;
+            margin: 5px;
+            font-family: monospace;
+            font-size: 15px;
+        }
+        
+        #kereses {
+            margin: 10px;
+        }
+        
+        h2 {
+            font-size: 22px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <h1 style="text-align: center;">Foci</h1>
+        </header>
+        <nav class="navbar navbar-expand-md bg-dark navbar-dark">
+            <!-- Brand -->
+            <a class="navbar-brand" href="#"></a>
+
+            <!-- Toggler/collapsibe Button -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Zétény</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index2.html">Ádám</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <input class="form-control" id="kereses" type="text" placeholder="Search..">
+        <h2>Serie A rangsor 1968-tól 2018-ig</h2>
+        <div class="row" id="ide"></div>
+    </div>
+
+    <script>
+        fetch("https://raw.githubusercontent.com/effesessa/datasets/master/football-serie-a/json/dataset-rankings-1966-2018.json")
+            .then(x => x.json())
+            .then(y => megjelenit(y));
+
+        $(document).ready(function() {
+            $("#kereses").on("keyup", function() {
+                var value = $(this).val().toLowerCase();
+                $("#ide div").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                });
+            });
+        });
+
+
+
+
+        function megjelenit(adatok) {
+            console.log(adatok);
+            let divide = document.querySelector("#ide");
+            for (elem of adatok) {
+                let div1 = document.createElement("div");
+                div1.setAttribute("class", "col-sm-4");
+                let div2 = document.createElement("div");
+                div2.setAttribute("class", "keret");
+                div1.appendChild(div2);
+                divide.appendChild(div1);
+                try {
+                    div2.innerHTML = '<span class="bal">Szezon:' + elem.season + '</span></br>';
+                    div2.innerHTML += '<span class="bal">Helyezés:' + elem.position + '</span></br>';
+                    div2.innerHTML += '<span class="bal">Csapat:' + elem.team + '</span></br>';
+                    div2.innerHTML += '<span class="bal">Megnyert meccsek:' + elem.wins + '</span></br>';
+                    div2.innerHTML += '<span class="bal">Vesztett meccsek:' + elem.losses + '</span></br>';
+                    div2.innerHTML += '<span class="bal">Döntetlenek:' + elem.draws + '</span></br>';
+                } catch {
+
+                }
+
+            }
+
+            let select = document.createElement("select");
+            document.body.appendChild(select);
+            select.addEventListener("change", fociadatok);
+            select.addEventListener("mouseenter", zoldre);
+            select.addEventListener("mouseleave", feherre);
+            let i = 0;
+            for (elem of adatok) {
+                let option = document.createElement("option");
+                select.appendChild(option);
+                option.innerHTML = elem.season + '  ' + elem.team;
+                option.setAttribute("value", i);
+                i++;
+            }
+
+
+
+            function fociadatok(e) {
+                let hanyadik = e.target.value;
+                let ul = createElement("ul");
+                for (elem of adatok) {
+                    let li1 = createElement("li");
+                    li1.innerHTML = "Megnyert meccsek: " + elem[hanyadik].wins;
+                    let li2 = createElement("li");
+                    li2.innerHTML = "Vesztett meccsek: " + elem[hanyadik].losses;
+                    let li3 = createElement("li");
+                    li3.innerHTML = "Döntetlenek: " + elem[hanyadik].draws;
+                    ul.appendChild(li1);
+                    ul.appendChild(li2);
+                    ul.appendChild(li3);
+                }
+                document.body.appendChild(ul);
+            }
+
+            function zoldre() {
+                select.style.backgroundColor = "green";
+            }
+
+            function feherre() {
+                select.style.backgroundColor = "white";
+            }
+        }
+    </script>
+</body>
+
+</html>
