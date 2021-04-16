@@ -3,13 +3,10 @@ h1{
 }
 
 button{
-    width: 50%;
+    width: 98%;
     margin: 10px;
 }
 
-#orszag{
-    width: 50%;
-}
 
 table{
     border: 1px solid salmon;
