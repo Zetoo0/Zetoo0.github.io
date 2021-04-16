@@ -1,0 +1,16 @@
+h1{
+    text-align: center;
+}
+
+button{
+    width: 50%;
+    margin: 10px;
+}
+
+#orszag{
+    width: 50%;
+}
+
+table{
+    border: 1px solid salmon;
+}
