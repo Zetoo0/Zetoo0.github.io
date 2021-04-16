@@ -1,13 +1,13 @@
-function kereses(){
+function search(){
     fetch("https://covid.ourworldindata.org/data/owid-covid-data.json")
     .then(x => x.json())
-    .then(datas => megjelenit(datas));
+    .then(datas => display(datas));
 }
 
-function megjelenit(datas){
+function display(datas){
     console.log(datas);
-    const tablediv = document.getElementById("tablazat");
-    const orszag = document.getElementById("orszag").value;
+    const tablediv = document.getElementById("covid_table");
+    const country = document.getElementById("country").value;
 
     const table = document.createElement("table");
     tablediv.appendChild(table);
@@ -24,7 +24,7 @@ function megjelenit(datas){
     thead.appendChild(thr);
     table.appendChild(thead);
 
-    for (elem of datas[orszag].data){
+    for (elem of datas[country].data){
         const tr = document.createElement("tr");
         const td_date = document.createElement("td");
         td_date.innerHTML = elem.date;
