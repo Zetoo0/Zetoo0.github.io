@@ -8,8 +8,8 @@ function adatlekérdezés() {
     country2 = document.getElementById("country2").value;
     country3 = document.getElementById("country3").value;
 
-    if (country1 == "" || country2 == "" || country3 == "") {
-        document.getElementById("summary").innerHTML = '<p style="color:red">Az ország kódját meg kell adni!</p>';
+    if (country1 == "" || country2 == "" || country3 == "" || country1.valueOf != 3 || country2.valueOf != 3 || country3.valueOf != 3) {
+        document.getElementById("summary").innerHTML = '<p style="color:red">Az ország kódját meg kell adni és nem áll többől mint 3 betű!</p>';
     } else {
         fetch("https://covid.ourworldindata.org/data/owid-covid-data.json")
             .then(x => x.json())
