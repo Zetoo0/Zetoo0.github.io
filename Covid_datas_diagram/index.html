@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script src="./node_modules/plotly.js-dist/plotly.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 style="text-align: center;">Covid adatok diagrammal</h1>
+
+        <label for="">Első ország kódja( pl. HUN):</label>
+        <input type="text" id="country1" class="form-control">
+        <label for="">Második ország kódja( pl. CZE):</label>
+        <input type="text" id="country2" class="form-control">
+        <label for="">Harmadik ország kódja( pl. JPN):</label>
+        <input type="text" id="country3" class="form-control">
+        <button onclick="adatlekérdezés()" class="btn btn-primary" style="margin-top: 10px;">Diagram megrajzolása</button>
+
+        <div id="summary"></div>
+
+
+        <div id="diagr"></div>
+
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
