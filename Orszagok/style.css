@@ -1,0 +1,29 @@
+.keret {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    margin: 5px;
+    font-family: monospace;
+    font-size: 15px;
+    box-shadow: 1px 1px;
+}
+
+#lenyilo {
+    width: 50%;
+}
+
+.container {
+    text-align: center;
+}
+
+.kiskep {
+    width: 150px;
+}
+
+.nagykep {
+    width: 50%;
+}
+
+#IdCheck {
+    margin-left: 10px;
+}

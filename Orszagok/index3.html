@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Country minigame</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" id="fodiv">
+        <h1>Országok</h1>
+
+        <nav class="navbar navbar-expand-sm bg-light">
+
+            <!-- Links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Országok</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index2.html">Keresés</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index3.html">Fővárosok</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="index4.html">Népesség</a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <div id="divCapital"></div>
+
+        <div id="divSummary"></div>
+
+        <div id="divScore">
+            <div id="IsGoodAnswersScore"></div>
+            <div id="IsNotGoodAnswersScore"></div>
+        </div>
+
+
+    </div>
+
+    <audio id="correct">
+        <source src="./audio/succes.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="incorrect">
+        <source src="./audio/incorrect.mp3" type="audio/mpeg">
+    </audio>
+    <script src="script3.js"></script>
+</body>
+
+</html>
